@@ -1,0 +1,2 @@
+# firozo
+The Firozo project!
