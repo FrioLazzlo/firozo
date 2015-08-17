@@ -1,7 +1,4 @@
 /**
- * Created by Frio on 15. 8. 2015.
- */
-/**
  * uses Array.prototype.slice in events.publish
  * uses window (As the defaultContext for the callbacks in events.subscribe
  */
@@ -42,15 +39,15 @@ define([ ], function () {
             }
 
             if(typeof callback !== 'function') {
-                delete eventRegistry[eventName];
-            } else {
-                for(x = 0, lex = callbackList.length; x < lex; x += 1) {
-                    storedObject = callbackList[x];
+                return;
+            }
 
-                    if(storedObject.callback === callback) {
-                        callbackList.splice(x, 1);
-                        return;
-                    }
+            for(x = 0, lex = callbackList.length; x < lex; x += 1) {
+                storedObject = callbackList[x];
+
+                if (storedObject.callback === callback) {
+                    callbackList.splice(x, 1);
+                    return;
                 }
             }
         },
